@@ -1,0 +1,198 @@
+
+  <h5 class="text-left my-3">Add an advisory </h5>                 
+
+<div class="container shadow my-2 text-left" style="min-height: 250px; ">
+
+  <div class="container-fluid p-5">
+         
+        <h6 *ngIf = "dbError" class="text-center text-danger">{{dbError}}</h6>
+
+        <!-- <h3 class="light-font  text-secondary my-3"><i class="fa fa-lock"></i> Sign Up </h3> -->
+
+        <form  [formGroup] = "advisoryDetailsForm" (ngSubmit) = "onSubmit()">
+
+          <div class="form-group">
+            <label for="typeOfCall">Call type <span class="text-danger">*</span></label>
+            <select class="form-control" name="typeOfCall" id="" formControlName="typeOfCall">
+              <option *ngFor="let data of dropdownDataResult?.callTypes; let i = index" [value]="data" selected>
+                {{data}}
+              </option>
+            </select>
+            <h6 class="text-danger"
+              *ngIf="advisoryDetailsFormControls.typeOfCall.touched && advisoryDetailsFormControls.typeOfCall.value === ''">
+              Call type is required </h6>
+          </div>
+
+          <div class="form-group" *ngIf = "advisoryDetailsFormControls.typeOfCall.value">
+            <label for="action">Action <span class="text-danger">*</span></label>
+            <select class="form-control" name="action" id="" formControlName="action">
+              <option *ngFor="let data of dropdownDataResult?.action; let i = index" [value]="data" selected>
+                {{data}}
+              </option>
+            </select>
+            <h6 class="text-danger"
+              *ngIf="advisoryDetailsFormControls.action.touched && advisoryDetailsFormControls.action.value === ''">
+              Action is required </h6>
+          </div>
+
+
+          <div class="form-group" *ngIf = "advisoryDetailsFormControls.action.value">
+            <div class="row">
+
+              <div class="col-5">
+                <label for="timeOfCall">Time of call <span class="text-danger">*</span></label>
+                <input type="text" disabled  class="form-control" name="timeOfCall" formControlName = "timeOfCall" id="timeOfCall" aria-describedby="timeOfCallHelp" placeholder="">
+
+              </div>
+
+              <div class="col-1 my-auto">
+                <i class="fa fa-refresh" aria-hidden="true" (click) = "setTimeOfCall()"></i>
+              </div>
+              <div class="col-2">
+                <label for="hours">Hours</label>
+                <select class="form-control" name="category" id="selectedHours" #selectedHours (change) = "setTimeOfCall()">
+                  <option *ngFor="let data of hours; let i = index" [value]="data" selected>
+                    {{data}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-2">
+                <label for="minutes">Minutes</label>
+                <select class="form-control" name="category" id="selectedMinutes" #selectedMinutes (change) = "setTimeOfCall()">
+                  <option *ngFor="let data of minutes; let i = index" [value]="data" selected>
+                    {{data}}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-2">
+                <label for="ampm">AM/PM</label>
+                <select class="form-control" name="category" id="selectedAmpm" #selectedAmpm (change) = "setTimeOfCall()">
+                  <option *ngFor="let data of ampm; let i = index" [value]="data" selected>
+                    {{data}}
+                  </option>
+                </select>
+              </div>
+
+              
+            </div>
+            <h6 class="text-danger"
+              *ngIf="advisoryDetailsFormControls.timeOfCall.touched && advisoryDetailsFormControls.timeOfCall.value === ''">
+              Time of call is required </h6>
+          </div>
+
+
+          <div class="form-group" *ngIf = "advisoryDetailsFormControls.timeOfCall.value">
+            <label for="category">Category <span class="text-danger">*</span></label>
+            <select class="form-control" name="category" id="" formControlName="category">
+              <option *ngFor="let data of dropdownDataResult?.category; let i = index" [value]="data" selected>
+                {{data}}
+              </option>
+            </select>
+            <h6 class="text-danger"
+              *ngIf="advisoryDetailsFormControls.category.touched && advisoryDetailsFormControls.category.value === ''">
+              Category is required </h6>
+          </div>
+
+
+
+          <!-- <div class="form-group" *ngIf = "advisoryDetailsFormControls.category.value">
+            <label for="nameOfShare">Stock name <span class="text-danger">*</span></label>
+            <select class="form-control" name="nameOfShare" id="" formControlName="nameOfShare">
+              <option *ngFor="let data of dropdownDataResult?.nameOfShare; let i = index" [value]="data" selected>
+                {{data}}
+              </option>
+            </select>
+            <h6 class="text-danger"
+              *ngIf="advisoryDetailsFormControls.nameOfShare.touched && advisoryDetailsFormControls.nameOfShare.value === ''">
+              Name of a share is required </h6>
+          </div> -->
+
+          <div class="form-group" *ngIf = "advisoryDetailsFormControls.category.value">
+            <label for="nameOfShare">Stock name <span class="text-danger">*</span></label>
+
+           <input  type="text" placeholder="select a stock ..." name="nameOfShare" id="" formControlName="nameOfShare"
+            list="optionss" class="form-control">
+        
+            <datalist id=optionss  >
+                <option *ngFor="let data of dropdownDataResult?.nameOfShare; let i = index"  [value]="data">
+                    
+                    <a class="nav-link btn-outline-dark"  >{{data}}</a>
+                </option>
+            </datalist>
+
+            <h6 class="text-danger"
+            *ngIf="advisoryDetailsFormControls.nameOfShare.touched && advisoryDetailsFormControls.nameOfShare.value === ''">
+            Stock name is required </h6>
+
+        </div>
+
+
+        <div class="form-group" *ngIf = "advisoryDetailsFormControls.category.value === 'OPTIONS' || advisoryDetailsFormControls.category.value === 'EQUITY'">
+          <label for="strikePrice">Strike price </label>
+          <input type="number"  class="form-control" name="strikePrice" formControlName = "strikePrice" id="strikePrice" aria-describedby="strikePriceHelp" placeholder="">
+
+          <h6 class="text-danger"
+            *ngIf="advisoryDetailsFormControls.strikePrice.touched && advisoryDetailsFormControls.strikePrice.value === ''">
+            Strike price is required </h6>
+        </div>
+        
+
+        <div class="form-group" *ngIf = "advisoryDetailsFormControls.category.value === 'FUTURES' || advisoryDetailsFormControls.category.value === 'OPTIONS' || advisoryDetailsFormControls.category.value === 'EQUITY'">
+          <label for="expiryDate">Expiry date <span class="text-danger">*</span></label>
+          <input type="date" class="form-control" name="expiryDate" formControlName = "expiryDate" id="expiryDate" aria-describedby="passHelp" placeholder="">
+          <h6 class="text-danger" *ngIf = "advisoryDetailsFormControls.expiryDate.touched && advisoryDetailsFormControls.expiryDate.value === ''"> Expiry date is required </h6>
+
+
+
+        </div>
+
+
+        <div class="form-group" *ngIf = "advisoryDetailsFormControls.nameOfShare.value">
+          <label for="rate">Rate <span class="text-danger">*</span></label>
+          <input type="text"  class="form-control" name="rate" formControlName = "rate" id="rate" aria-describedby="rateHelp" placeholder="">
+
+          <h6 class="text-danger"
+            *ngIf="advisoryDetailsFormControls.rate.touched && advisoryDetailsFormControls.rate.value === ''">
+            Rate is required </h6>
+        </div>
+
+        <div class="form-group" *ngIf = "advisoryDetailsFormControls.rate.value">
+          <label for="stopLoss">Stop loss <span class="text-danger">*</span></label>
+          <input type="text" disabled class="form-control" name="stopLoss" formControlName = "stopLoss" id="stopLoss" aria-describedby="stopLossHelp" placeholder="">
+
+          <h6 class="text-danger"
+            *ngIf="advisoryDetailsFormControls.stopLoss.touched && advisoryDetailsFormControls.stopLoss.value === ''">
+            Stop loss is required </h6>
+        </div>
+
+        <div class="form-group" *ngIf = "advisoryDetailsFormControls.rate.value">
+          <label for="target">Target <span class="text-danger">*</span></label>
+          <input type="text" disabled class="form-control" name="target" formControlName = "target" id="target" aria-describedby="targetHelp" placeholder="">
+
+          <h6 class="text-danger"
+            *ngIf="advisoryDetailsFormControls.target.touched && advisoryDetailsFormControls.target.value === ''">
+            Target is required </h6>
+        </div>
+
+        <div class="form-group" *ngIf = "advisoryDetailsFormControls.rate.value">
+          <label for="secondTarget">Target 2 <span class="text-danger">*</span></label>
+          <input type="text" disabled class="form-control" name="secondTarget" formControlName = "secondTarget" id="secondTarget" aria-describedby="secondTargetHelp" placeholder="">
+
+          <h6 class="text-danger"
+            *ngIf="advisoryDetailsFormControls.secondTarget.touched && advisoryDetailsFormControls.secondTarget.value === ''">
+            Target 2 is required </h6>
+        </div>
+
+            <button type="submit" [disabled] = "advisoryDetailsForm.invalid"  class="btn btn-sm btn-outline-dark mr-1">Create this advisory</button>
+            <!-- <a class="btn btn-sm btn-outline-dark " routerLink = "/signup">Create an account</a> -->
+  
+        </form>
+
+    </div>
+      
+</div>
+
+<app-admin-advisory-list></app-admin-advisory-list>
+<app-response-modal></app-response-modal>

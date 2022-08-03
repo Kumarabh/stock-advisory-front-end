@@ -1,0 +1,12 @@
+.fa-refresh {
+    color: purple;
+}
+.fa-refresh:hover {
+    cursor: pointer;
+}
+
+.active {
+    background-color: #5a298b!important;
+    color: white;
+    transition: .5s;
+}

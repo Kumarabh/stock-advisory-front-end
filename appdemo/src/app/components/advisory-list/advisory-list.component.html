@@ -1,0 +1,226 @@
+<!-- EQUITY ADVISORIES -->
+<div class="container shadow my-4" style="min-height: 250px;">
+    <div class="container-fluid">
+        <h5 class="text-left my-3">Equity advisories </h5>
+
+       
+       <!-- tabular data starts -->
+
+       <table class="table  mb-5 text-center">
+        <thead>
+          <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Category</th>
+            <th scope="col">Type of call</th>
+            <th scope="col">Action</th>
+            <th scope="col">Time of call</th>
+            <th scope="col">Name of share</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Stop loss</th>
+            <th scope="col">Target</th>
+            <th scope="col">Target 2</th>
+            <th scope="col">Strike price</th>
+            <th scope="col">Expiry Date</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of dataResultEquity; let i = index">
+            <td><b>{{i + 1}}</b></td>
+            <td>
+                <b>{{data?.category}}</b>
+            </td>
+            <td>
+                <b>{{data?.typeOfCall}} </b>
+            </td>
+            <td>
+                <b>{{data?.action}}</b>
+            </td>
+            <td>
+                <b>{{data?.timeOfCall}}</b>
+            </td>
+            <td>
+                <b>{{data?.nameOfShare}} </b>
+            </td>
+            <td>
+                <b>{{data?.rate}}</b>
+            </td>
+        
+            <td>
+                <b>{{data?.stopLoss}}</b>
+            </td>
+            <td>
+                <b>{{data?.target}} </b>
+            </td>
+            <td>
+                <b>{{data?.secondTarget}}</b>
+            </td>
+            <td>
+                <b>{{data?.strikePrice || 'NA'}} </b>
+            </td>
+            <td>
+                <b>{{data?.expiryDate | date : 'dd MMM yyyy'}}</b>
+            </td>
+        </tr>
+
+
+
+        </tbody>
+      </table>
+
+      <h3 class="text-center" *ngIf = "!dataResultEquity?.length">No Data Available</h3>
+
+    </div>
+      
+</div>
+
+<!-- FUTURES ADVISORIES -->
+<div class="container shadow my-4" style="min-height: 250px;">
+    <div class="container-fluid">
+        <h5 class="text-left my-3">Futures advisories </h5>
+
+
+       <!-- tabular data starts -->
+
+       <table class="table  mb-5 text-center">
+        <thead>
+          <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Category</th>
+            <th scope="col">Type of call</th>
+            <th scope="col">Action</th>
+            <th scope="col">Time of call</th>
+            <th scope="col">Name of share</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Stop loss</th>
+            <th scope="col">Target</th>
+            <th scope="col">Target 2</th>
+            <th scope="col">Strike price</th>
+            <th scope="col">Expiry Date</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of dataResultFutures; let i = index">
+            <td><b>{{i + 1}}</b></td>
+            <td>
+                <b>{{data?.category}}</b>
+            </td>
+            <td>
+                <b>{{data?.typeOfCall}} </b>
+            </td>
+            <td>
+                <b>{{data?.action}}</b>
+            </td>
+            <td>
+                <b>{{data?.timeOfCall}}</b>
+            </td>
+            <td>
+                <b>{{data?.nameOfShare}} </b>
+            </td>
+            <td>
+                <b>{{data?.rate}}</b>
+            </td>
+        
+            <td>
+                <b>{{data?.stopLoss}}</b>
+            </td>
+            <td>
+                <b>{{data?.target}} </b>
+            </td>
+            <td>
+                <b>{{data?.secondTarget}}</b>
+            </td>
+            <td>
+                <b>{{data?.strikePrice || 'NA'}} </b>
+            </td>
+            <td>
+                <b>{{data?.expiryDate | date : 'dd MMM yyyy'}}</b>
+            </td>
+        </tr>
+
+
+
+        </tbody>
+      </table>
+      <h3 class="text-center" *ngIf = "!dataResultFutures?.length">No Data Available</h3>
+
+    </div>
+      
+</div>
+
+
+<!-- OPTIONS ADVISORIES -->
+
+<div class="container shadow my-4" style="min-height: 250px;">
+    <div class="container-fluid">
+        <h5 class="text-left my-3">Options advisories </h5>
+
+       
+       <!-- tabular data starts -->
+
+       <table class="table  mb-5 text-center">
+        <thead>
+          <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Category</th>
+            <th scope="col">Type of call</th>
+            <th scope="col">Action</th>
+            <th scope="col">Time of call</th>
+            <th scope="col">Name of share</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Stop loss</th>
+            <th scope="col">Target</th>
+            <th scope="col">Target 2</th>
+            <th scope="col">Strike price</th>
+            <th scope="col">Expiry Date</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of dataResultOptions; let i = index">
+            <td><b>{{i + 1}}</b></td>
+            <td>
+                <b>{{data?.category}}</b>
+            </td>
+            <td>
+                <b>{{data?.typeOfCall}} </b>
+            </td>
+            <td>
+                <b>{{data?.action}}</b>
+            </td>
+            <td>
+                <b>{{data?.timeOfCall}}</b>
+            </td>
+            <td>
+                <b>{{data?.nameOfShare}} </b>
+            </td>
+            <td>
+                <b>{{data?.rate}}</b>
+            </td>
+        
+            <td>
+                <b>{{data?.stopLoss}}</b>
+            </td>
+            <td>
+                <b>{{data?.target}} </b>
+            </td>
+            <td>
+                <b>{{data?.secondTarget}}</b>
+            </td>
+            <td>
+                <b>{{data?.strikePrice || 'NA'}} </b>
+            </td>
+            <td>
+                <b>{{data?.expiryDate | date : 'dd MMM yyyy'}}</b>
+            </td>
+        </tr>
+
+        </tbody>
+      </table>
+
+      <h3 class="text-center" *ngIf = "!dataResultOptions?.length">No Data Available</h3>
+
+    </div>
+      
+</div>

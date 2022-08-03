@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-2 py-3" >
+    <div class="container pl-0">
+        <i class="fa fa-line-chart" aria-hidden="true"></i> &nbsp; <a class="navbar-brand" routerLink ="">Best stock advisory</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" >
+        <!-- <li class="nav-item active" *ngFor = "let data of dataResult?.links">
+          <a class="nav-link" routerLink ="{{data.url}}">{{data?.label}} <span class="sr-only">(current)</span></a>
+        </li> -->
+        <li class="nav-item active" >
+          <a class="nav-link" routerLink ="/advisory">advisories</a>
+        </li>
+
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav mr-right" >
+        <li class="nav-item"  *ngIf = "userLoggedIn">
+          <i class="fa fa-credit-card mr-2 mt-2" routerLink = "/new-order"  style="color: #333958 !important;font-size: 20px;" aria-hidden="true"></i> 
+        </li>
+        
+        <li class="nav-item"  *ngIf = "userLoggedIn">
+          <i class="fa fa-shopping-cart mt-2" routerLink = "/my-orders"  style="color: #333958 !important;font-size: 20px;" aria-hidden="true"></i> 
+          <span class="text-dark">{{cartLength}}</span>
+        </li>
+        
+        <li class="nav-item dropdown">
+         
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="
+          border: 1px solid #c9c9c9;
+    margin-left: -150px;
+    padding: 0px;
+          ">
+
+            <div class="row">
+              <div class="col-md-12">
+
+                <!-- not logged in -->
+                <div class="card shadow p-3"  *ngIf = "!service.userLoggedIn.getValue()" >
+                  <img class="card-img-top"  src="../../../assets/profilePictureAlt.png" alt="Missing picture">
+                  <div class="card-body text-center">
+                    <p class="card-text" style="font-family: auto;"><b>Not logged in</b></p>
+                    <a class="btn btn-sm btn-outline-dark mr-1" routerLink = "/login">Login</a>
+
+                    <a class="btn btn-sm btn-outline-dark " routerLink = "/signup">Sign Up</a>
+                   
+                  </div>
+                </div>
+
+
+                <!-- logged in -->
+
+                <div class="card shadow p-3" *ngIf = "service.userLoggedIn.getValue()" >
+                  <img class="card-img-top"  src="../../../assets/profilePictureAlt.png" alt="Missing picture">
+                  <div class="card-body text-center">
+                    <p class="card-text" style="font-family: auto;"><b>{{service.loggedInUserData.getValue()?.name}}</b></p>
+                    <a class="dropdown-item" style="font-size: 14px;
+                    font-weight: 100;
+                    font-family: auto;" routerLink = "/admin/create-advisory">Admin login</a> 
+                <a class="btn btn-sm btn-outline-dark mr-1" (click) = "signOut()">Sign Out</a>
+
+
+                  </div>
+                </div>
+
+
+
+              </div>
+        
+            </div>
+            
+          </div>
+        </li>
+      </ul>
+       <!-- <h6 class="mt-1">{{service.loggedInUserData.getValue()?.name}}</h6> -->
+
+
+      
+
+    </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid food-banner">
+
+  </div>
