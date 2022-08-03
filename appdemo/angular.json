@@ -111,7 +111,8 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "appdemo:serve"
+            "devServerTarget": "appdemo:serve",
+             "disableHostCheck": true
           },
           "configurations": {
             "production": {
