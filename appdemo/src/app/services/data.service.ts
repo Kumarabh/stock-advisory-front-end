@@ -26,10 +26,14 @@ export class DataService {
     return this.http.post(this.baseUrl + '/advisory', postData) 
 
   }
-  getAdvisoryList() {
-    // return this.http.get(this.baseUrl + '/advisory-dropdown') 
+  getAdvisoryDropdownData() {
     return this.http.get(this.stockAdvisoryDropdownUrl);
-  return this.http.get(this.baseUrl + '/advisory') 
+    return this.http.get(this.baseUrl + '/advisory-dropdown') 
+
+  }
+
+  getAdvisoryList() {
+    return this.http.get(this.baseUrl + '/advisory') 
   }
 
   deleteAdvisory(advisoryId) {
