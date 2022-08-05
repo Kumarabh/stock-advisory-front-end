@@ -14,7 +14,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = 'http://127.0.0.1:5000/api/v1'
+  baseUrl = 'http://143.110.240.38:5000/api/v1'
   public userLoggedIn = new BehaviorSubject<Boolean>(true);
   public loggedInUserData = new BehaviorSubject<any>(null);
   public modalDataObjectBehavior = new BehaviorSubject<any>(modalDataObject);
