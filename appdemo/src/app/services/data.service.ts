@@ -19,6 +19,7 @@ export class DataService {
   public loggedInUserData = new BehaviorSubject<any>(null);
   public modalDataObjectBehavior = new BehaviorSubject<any>(modalDataObject);
   advisoryAddedUpdateAdvisoryList: Subject<boolean> = new Subject();
+  stockAdvisoryDropdownUrl='assets/stockAdvisoryDropdown.json'
 
 
   createAdvisoryData(postData) {
@@ -26,12 +27,9 @@ export class DataService {
 
   }
   getAdvisoryDropdownData() {
-    return this.http.get(this.baseUrl + '/advisory-dropdown') 
-
-  }
-
-  getAdvisoryList() {
-    return this.http.get(this.baseUrl + '/advisory') 
+    // return this.http.get(this.baseUrl + '/advisory-dropdown') 
+    return this.http.get(this.stockAdvisoryDropdownUrl);
+  return this.http.get(this.baseUrl + '/advisory') 
   }
 
   deleteAdvisory(advisoryId) {

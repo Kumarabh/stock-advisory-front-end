@@ -1,0 +1,25 @@
+[{
+    "callTypes": [
+        "INTRADAY",
+        "DELIVERY"
+    ],
+    "action": [
+        "BUY",
+        "SELL"
+    ],
+    "category": [
+        "EQUITY",
+        "FUTURES",
+        "OPTIONS"
+    ],
+    "nameOfShare": [
+        "Zerodha",
+        "Reliance Industries",
+        "Upstox",
+        "HDFC Bank",
+        "State bank of india",
+        "Edelweis",
+        "Bajaj Finance"
+    ]
+}
+]
