@@ -26,7 +26,7 @@ export class DataService {
     return this.http.post(this.baseUrl + '/advisory', postData) 
 
   }
-  getAdvisoryDropdownData() {
+  getAdvisoryList() {
     // return this.http.get(this.baseUrl + '/advisory-dropdown') 
     return this.http.get(this.stockAdvisoryDropdownUrl);
   return this.http.get(this.baseUrl + '/advisory') 
