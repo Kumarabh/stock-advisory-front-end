@@ -20,7 +20,7 @@ export class DataService {
   public modalDataObjectBehavior = new BehaviorSubject<any>(modalDataObject);
   advisoryAddedUpdateAdvisoryList: Subject<boolean> = new Subject();
   stockAdvisoryDropdownUrl='assets/stockAdvisoryDropdown.json'
-
+// uniuniniunini
 
   createAdvisoryData(postData) {
     return this.http.post(this.baseUrl + '/advisory', postData) 
